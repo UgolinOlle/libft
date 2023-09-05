@@ -1,0 +1,59 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/28 11:49:44 by ugolin-olle       #+#    #+#              #
+#    Updated: 2023/09/05 10:43:33 by ugolin-olle      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+FILES = ft_atoi.c \
+	ft_bzero.c \
+	ft_calloc.c \
+	ft_isalnum.c \
+	ft_isalpha.c \
+	ft_isascii.c \
+	ft_isdigit.c \
+	ft_isprint.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_memcpy.c \
+	ft_memmove.c \
+	ft_memset.c \
+	ft_strchr.c \
+	ft_strdup.c \
+	ft_strlcat.c \
+	ft_strlcpy.c \
+	ft_strlen.c \
+	ft_strncmp.c \
+	ft_strnstr.c \
+	ft_strrchr.c \
+	ft_substr.c \
+	ft_tolower.c \
+	ft_toupper.c
+
+OBJS = $(FILES:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
+
+%.o:%.c
+	$(CC) $(CFLAGS) -c -I libft.h $< -o $(<:.c=.o)
+
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
+
+all: libft.a
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
