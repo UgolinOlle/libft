@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 01:51:06 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/08/30 15:28:02 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/09/11 11:03:26 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s || (*s == '\0' && c == '\0'))
 	{
-		if ((unsigned char)*s == c)
+		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}

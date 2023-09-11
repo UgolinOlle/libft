@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:47:41 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/08/29 22:52:32 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/09/11 13:03:34 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
 
+	if (!dst && !src)
+		return (0);
 	i = 0;
 	if (src < dst)
 	{

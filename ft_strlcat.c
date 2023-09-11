@@ -6,7 +6,7 @@
 /*   By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:52:57 by ugolin-olle       #+#    #+#             */
-/*   Updated: 2023/08/30 17:17:21 by ugolin-olle      ###   ########.fr       */
+/*   Updated: 2023/09/11 13:08:13 by ugolin-olle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	total_len;
 	size_t	i;
 
+	if (dst == NULL && dstsize == 0)
+		return (ft_strlen(src));
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
 	total_len = dst_len + src_len;

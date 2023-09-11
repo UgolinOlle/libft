@@ -6,7 +6,7 @@
 #    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 11:49:44 by ugolin-olle       #+#    #+#              #
-#    Updated: 2023/09/11 09:37:08 by ugolin-olle      ###   ########.fr        #
+#    Updated: 2023/09/11 10:36:06 by ugolin-olle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ FILES = ft_atoi.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
+	ft_split.c \
 	ft_strchr.c \
 	ft_strdup.c \
 	ft_striteri.c \
