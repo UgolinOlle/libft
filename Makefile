@@ -6,64 +6,51 @@
 #    By: ugolin-olle <ugolin-olle@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 11:49:44 by ugolin-olle       #+#    #+#              #
-#    Updated: 2023/09/13 11:22:54 by ugolin-olle      ###   ########.fr        #
+#    Updated: 2023/10/10 23:42:06 by ugolin-olle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_atoi.c \
-	ft_bzero.c \
-	ft_calloc.c \
-	ft_isalnum.c \
-	ft_isalpha.c \
-	ft_isascii.c \
-	ft_isdigit.c \
-	ft_isprint.c \
-	ft_itoa.c \
-	ft_memchr.c \
-	ft_memcmp.c \
-	ft_memcpy.c \
-	ft_memmove.c \
-	ft_memset.c \
-	ft_putchar_fd.c \
-	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
-	ft_putstr_fd.c \
-	ft_split.c \
-	ft_strchr.c \
-	ft_strdup.c \
-	ft_striteri.c \
-	ft_strjoin.c \
-	ft_strlcat.c \
-	ft_strlcpy.c \
-	ft_strlen.c \
-	ft_strmapi.c \
-	ft_strncmp.c \
-	ft_strnstr.c \
-	ft_strrchr.c \
-	ft_strtrim.c \
-	ft_substr.c \
-	ft_tolower.c \
-	ft_toupper.c
+SRC_DIR = srcs
+OBJ_DIR = objs
+INC_DIR = includes
 
-OBJS = $(FILES:.c=.o)
-CC = cc
+SRC_DIRS = str nbr file misc mem
+SRC_FILES = $(foreach dir,$(SRC_DIRS),$(wildcard $(SRC_DIR)/$(dir)/*.c))
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
+
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+INC_FLAGS = -I $(INC_DIR)
+
 NAME = libft.a
 
-%.o:%.c
-	$(CC) $(CFLAGS) -c -I libft.h $< -o $(<:.c=.o)
+AR = ar rcs
+RM = rm -rf
+MKDIR = mkdir -p
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+COLOR_RESET = \033[0m
+COLOR_INFO = \033[0;94m
+COLOR_SUCCESS = \033[0;92m
 
-all: libft.a
+all: $(NAME)
+
+$(NAME): $(OBJ_FILES)
+	@$(AR) $@ $^
+	@echo "$(COLOR_SUCCESS)$(NAME) has been created successfully.$(COLOR_RESET)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(MKDIR) $(dir $@)
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+	@echo "$(COLOR_INFO)Compiling: $<$(COLOR_RESET)"
 
 clean:
-	rm -f $(OBJS)
+	@$(RM) $(OBJ_DIR)
+	@echo "$(COLOR_INFO)Object files have been removed.$(COLOR_RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(COLOR_INFO)$(NAME) has been removed.$(COLOR_RESET)"
 
 re: fclean all
 
+.PHONY: all clean fclean re
