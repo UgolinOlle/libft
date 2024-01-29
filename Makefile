@@ -28,28 +28,28 @@ AR = ar rcs
 RM = rm -rf
 MKDIR = mkdir -p
 
-COLOR_RESET = \033[0m
-COLOR_INFO = \033[0;94m
-COLOR_SUCCESS = \033[0;92m
+RESET = \033[0m
+BLUE = \033[0;94m
+GREEN = \033[0;92m
 
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	@$(AR) $@ $^
-	@echo "$(COLOR_SUCCESS)$(NAME) has been created successfully.$(COLOR_RESET)"
+	@echo "$(GREEN)[OK] - Libft has been created successfully.$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(MKDIR) $(dir $@)
 	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
-	@echo "$(COLOR_INFO)Compiling: $<$(COLOR_RESET)"
+	@echo "$(BLUE)[INFO] - Compiling: $<$(RESET)"
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "$(COLOR_INFO)Object files have been removed.$(COLOR_RESET)"
+	@echo "$(GREEN)[OK] - Object files have been removed.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(COLOR_INFO)$(NAME) has been removed.$(COLOR_RESET)"
+	@echo "$(GREEN)[OK] - Libft has been removed correctly.$(RESET)"
 
 re: fclean all
 
